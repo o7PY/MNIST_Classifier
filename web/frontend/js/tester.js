@@ -72,26 +72,29 @@ async function predictDigit(sampleId, card, resultLabel) {
       return;
     }
     resultLabel.textContent = `→ ${data.predicted_digit} (true: ${data.true_digit})`;
-    flashFeedback(card, data.correct);
+    setCardResult(card, data.correct);
   } catch (err) {
     resultLabel.textContent = "error";
   }
 }
 
-function flashFeedback(card, correct) {
-  card.classList.remove("flash-good", "flash-bad");
-  void card.offsetWidth; // restart CSS animation on repeated clicks
-  card.classList.add(correct ? "flash-good" : "flash-bad");
-  setTimeout(() => card.classList.remove("flash-good", "flash-bad"), 800);
+function setCardResult(card, correct) {
+  card.classList.remove("result-good", "result-bad");
+  void card.offsetWidth; // restart the transition if the same card is clicked again
+  card.classList.add(correct ? "result-good" : "result-bad");
+}
 
-  document.body.classList.remove("page-flash-good", "page-flash-bad");
-  void document.body.offsetWidth;
-  document.body.classList.add(correct ? "page-flash-good" : "page-flash-bad");
-  setTimeout(() => document.body.classList.remove("page-flash-good", "page-flash-bad"), 800);
+function resetCardResults() {
+  for (const card of document.querySelectorAll(".digit-card")) {
+    card.classList.remove("result-good", "result-bad");
+    const resultLabel = card.querySelector(".digit-result");
+    if (resultLabel) resultLabel.textContent = "";
+  }
 }
 
 document.getElementById("model-select").addEventListener("change", (ev) => {
   selectedModelId = ev.target.value;
+  resetCardResults();
 });
 document.getElementById("randomize-btn").addEventListener("click", randomizeDigits);
 
