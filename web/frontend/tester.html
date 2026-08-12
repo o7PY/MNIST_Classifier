@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tester — MNIST Model Builder & Tester</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">MNIST Model Builder & Tester</div>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/trainer.html">Trainer</a>
+      <a href="/tester.html" class="active">Tester</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Tester</h1>
+    <p class="subtitle">
+      Pick a trained model, then click a digit to see its prediction.
+    </p>
+
+    <div class="card" id="tester-empty-state" style="display: none">
+      <p class="placeholder-note">
+        No trained models yet. Train a model in the
+        <a href="/trainer.html">Trainer</a> section first.
+      </p>
+    </div>
+
+    <div id="tester-main" style="display: none">
+      <div class="card">
+        <h2>Model</h2>
+        <select id="model-select"></select>
+      </div>
+
+      <div class="card">
+        <h2>Digits</h2>
+        <p class="placeholder-note">
+          One random image per digit (0&ndash;9), drawn from the reserved
+          MNIST test split. Click a digit to predict it.
+        </p>
+        <button type="button" id="randomize-btn" class="palette-btn">Randomize</button>
+        <div id="digit-grid" class="digit-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/tester.js"></script>
+</body>
+</html>

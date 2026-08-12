@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "id": "input",
+      "type": "Input",
+      "config": {}
+    },
+    {
+      "id": "conv_1",
+      "type": "Conv2d",
+      "config": {
+        "out_channels": 32,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 0
+      }
+    },
+    {
+      "id": "relu_1",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "pool_1",
+      "type": "MaxPool2d",
+      "config": {
+        "kernel_size": 2
+      }
+    },
+    {
+      "id": "conv_2",
+      "type": "Conv2d",
+      "config": {
+        "out_channels": 64,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 0
+      }
+    },
+    {
+      "id": "relu_2",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "pool_2",
+      "type": "MaxPool2d",
+      "config": {
+        "kernel_size": 2
+      }
+    },
+    {
+      "id": "flatten_1",
+      "type": "Flatten",
+      "config": {}
+    },
+    {
+      "id": "dropout_1",
+      "type": "Dropout",
+      "config": {
+        "p": 0.5
+      }
+    },
+    {
+      "id": "linear_1",
+      "type": "Linear",
+      "config": {
+        "out_features": 128
+      }
+    },
+    {
+      "id": "relu_3",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "output",
+      "type": "Output",
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "conv_1"
+    },
+    {
+      "from": "conv_1",
+      "to": "relu_1"
+    },
+    {
+      "from": "relu_1",
+      "to": "pool_1"
+    },
+    {
+      "from": "pool_1",
+      "to": "conv_2"
+    },
+    {
+      "from": "conv_2",
+      "to": "relu_2"
+    },
+    {
+      "from": "relu_2",
+      "to": "pool_2"
+    },
+    {
+      "from": "pool_2",
+      "to": "flatten_1"
+    },
+    {
+      "from": "flatten_1",
+      "to": "dropout_1"
+    },
+    {
+      "from": "dropout_1",
+      "to": "linear_1"
+    },
+    {
+      "from": "linear_1",
+      "to": "relu_3"
+    },
+    {
+      "from": "relu_3",
+      "to": "output"
+    }
+  ]
+}

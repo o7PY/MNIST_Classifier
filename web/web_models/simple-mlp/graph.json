@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "id": "input",
+      "type": "Input",
+      "config": {}
+    },
+    {
+      "id": "flatten_1",
+      "type": "Flatten",
+      "config": {}
+    },
+    {
+      "id": "linear_1",
+      "type": "Linear",
+      "config": {
+        "out_features": 128
+      }
+    },
+    {
+      "id": "relu_1",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "output",
+      "type": "Output",
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "flatten_1"
+    },
+    {
+      "from": "flatten_1",
+      "to": "linear_1"
+    },
+    {
+      "from": "linear_1",
+      "to": "relu_1"
+    },
+    {
+      "from": "relu_1",
+      "to": "output"
+    }
+  ]
+}

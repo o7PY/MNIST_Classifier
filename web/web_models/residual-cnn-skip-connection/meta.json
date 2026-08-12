@@ -1,0 +1,8 @@
+{
+  "name": "Residual CNN (skip connection)",
+  "source": "preset",
+  "status": "trained",
+  "created_at": "2026-08-12T04:13:27.059593+00:00",
+  "val_f1": 0.984359459706668,
+  "val_acc": 0.9845
+}

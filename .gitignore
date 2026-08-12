@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Claude Code local session config
+.claude/settings.local.json
+
+# MNIST raw data (downloaded automatically by data.py on first run)
+data/
+web/data/
+
+# Trained model checkpoints (large binaries, regenerable via train.py / the
+# web app's Train button) - keep the small metadata/history/graph files.
+outputs/checkpoints/
+web/web_models/*/checkpoint.pt
+web/web_models/*/last_model.pt
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Internal planning/spec docs (not part of the shipped project)
+spec.md
+plan.md
+web/webspec.md
+web/webplan.md
+CLAUDE.md

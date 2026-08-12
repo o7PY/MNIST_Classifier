@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "id": "input",
+      "type": "Input",
+      "config": {}
+    },
+    {
+      "id": "conv_1",
+      "type": "Conv2d",
+      "config": {
+        "out_channels": 32,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      }
+    },
+    {
+      "id": "relu_1",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "conv_2",
+      "type": "Conv2d",
+      "config": {
+        "out_channels": 32,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      }
+    },
+    {
+      "id": "relu_2",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "conv_3",
+      "type": "Conv2d",
+      "config": {
+        "out_channels": 32,
+        "kernel_size": 3,
+        "stride": 1,
+        "padding": 1
+      }
+    },
+    {
+      "id": "add_1",
+      "type": "Add",
+      "config": {}
+    },
+    {
+      "id": "relu_3",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "pool_1",
+      "type": "MaxPool2d",
+      "config": {
+        "kernel_size": 2
+      }
+    },
+    {
+      "id": "flatten_1",
+      "type": "Flatten",
+      "config": {}
+    },
+    {
+      "id": "linear_1",
+      "type": "Linear",
+      "config": {
+        "out_features": 128
+      }
+    },
+    {
+      "id": "relu_4",
+      "type": "Activation",
+      "config": {
+        "type": "ReLU"
+      }
+    },
+    {
+      "id": "output",
+      "type": "Output",
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from": "input",
+      "to": "conv_1"
+    },
+    {
+      "from": "conv_1",
+      "to": "relu_1"
+    },
+    {
+      "from": "relu_1",
+      "to": "conv_2"
+    },
+    {
+      "from": "conv_2",
+      "to": "relu_2"
+    },
+    {
+      "from": "relu_2",
+      "to": "conv_3"
+    },
+    {
+      "from": "relu_1",
+      "to": "add_1"
+    },
+    {
+      "from": "conv_3",
+      "to": "add_1"
+    },
+    {
+      "from": "add_1",
+      "to": "relu_3"
+    },
+    {
+      "from": "relu_3",
+      "to": "pool_1"
+    },
+    {
+      "from": "pool_1",
+      "to": "flatten_1"
+    },
+    {
+      "from": "flatten_1",
+      "to": "linear_1"
+    },
+    {
+      "from": "linear_1",
+      "to": "relu_4"
+    },
+    {
+      "from": "relu_4",
+      "to": "output"
+    }
+  ]
+}

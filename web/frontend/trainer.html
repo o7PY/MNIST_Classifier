@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trainer — MNIST Model Builder & Tester</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">MNIST Model Builder & Tester</div>
+    <nav class="site-nav">
+      <a href="/index.html">Home</a>
+      <a href="/trainer.html" class="active">Trainer</a>
+      <a href="/tester.html">Tester</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Trainer</h1>
+    <p class="subtitle">
+      Build a custom architecture graph, or start from a famous preset, then
+      train it against MNIST.
+    </p>
+
+    <div class="card">
+      <h2>Presets</h2>
+      <div id="presets-list">
+        <p class="placeholder-note">Loading presets&hellip;</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Graph Editor</h2>
+      <p class="placeholder-note">
+        Click a block to add it, drag from a node's right-side port to
+        another node's left-side port to connect, click an edge to delete
+        it, drag a node's header to reposition it.
+      </p>
+      <div id="graph-editor-root"></div>
+
+      <div class="graph-save-row">
+        <input type="text" id="model-name-input" placeholder="Model name" />
+        <button type="button" id="save-model-btn" class="palette-btn">Save Model</button>
+      </div>
+      <p id="save-status" class="save-status"></p>
+    </div>
+
+    <div class="card">
+      <h2>Saved Models</h2>
+
+      <div class="train-config-row">
+        <label>LR <input type="number" id="hp-lr" value="0.001" step="0.0001" min="0.00001" /></label>
+        <label>Batch <input type="number" id="hp-batch" value="128" step="1" min="1" /></label>
+        <label>Epochs <input type="number" id="hp-epochs" value="20" step="1" min="1" max="100" /></label>
+        <label>
+          Optimizer
+          <select id="hp-optimizer">
+            <option value="Adam">Adam</option>
+            <option value="SGD">SGD</option>
+          </select>
+        </label>
+        <label>Patience <input type="number" id="hp-patience" value="5" step="1" min="1" /></label>
+      </div>
+
+      <div id="models-list">
+        <p class="placeholder-note">Loading saved models&hellip;</p>
+      </div>
+      <p id="train-error-line" class="save-status"></p>
+    </div>
+
+    <div class="card" id="training-progress-card" style="display: none">
+      <h2>Training Progress</h2>
+      <p id="training-status-line" class="placeholder-note"></p>
+      <div class="progress-bar-track"><div id="training-progress-fill" class="progress-bar-fill"></div></div>
+      <p id="training-metrics-line" class="placeholder-note"></p>
+    </div>
+  </main>
+
+  <script src="/js/graph_editor.js"></script>
+  <script src="/js/train_socket.js"></script>
+  <script src="/js/trainer.js"></script>
+</body>
+</html>
